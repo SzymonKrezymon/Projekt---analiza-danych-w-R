@@ -12,3 +12,21 @@ knitr::opts_chunk$set(echo = TRUE)
 dane <- read.csv("portugal_listinigs.csv")
 ```
 
+```{r}
+#zadanie1 <- source("./plik")
+#print(zadanie1)
+```
+## 1. Wprowadzenie
+
+## 1.1 Cel analizy
+
+## 2. Dane
+
+## 2.1. Braki danych
+
+```{r}
+dane$EnergyCertificate[dane$EnergyCertificate == "NC"] <- NA
+dane$EnergyCertificate[dane$EnergyCertificate == "Not available"] <- NA
+dane[dane == ""] <- NA
+```
+
