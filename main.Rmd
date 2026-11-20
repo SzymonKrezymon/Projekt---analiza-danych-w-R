@@ -6,6 +6,8 @@ date: "2026-11-19"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(naniar)
+library(tidyverse)
 ```
 
 ```{r}
@@ -28,5 +30,20 @@ dane <- read.csv("portugal_listinigs.csv")
 dane$EnergyCertificate[dane$EnergyCertificate == "NC"] <- NA
 dane$EnergyCertificate[dane$EnergyCertificate == "Not available"] <- NA
 dane[dane == ""] <- NA
+dane$EnergyEfficiencyLevel[dane$EnergyEfficiencyLevel == "NC"] <- NA
+```
+```{r}
+vis_miss(dane, warn_large_data = FALSE)
+```
+
+
+```{r}
+gg_miss_upset(dane)
+```
+
+
+```{r}
+dane$Type <- factor(dane$Type)
+gg_miss_fct(dane, fct = Type)
 ```
 
